@@ -7,6 +7,7 @@ import (
 	"hash"
 	"hash/crc32"
 	"hash/crc64"
+	"encoding/binary"
 	"io"
 	"os"
 )
@@ -49,9 +50,9 @@ func main() {
 		}
 
 		if flag.NArg() == 1 {
-			fmt.Printf("%0*x\n", hasher.Size(), hasher.Sum(nil))
+			fmt.Printf("%0*d\n", hasher.Size(), binary.BigEndian.Uint32(hasher.Sum(nil)))
 		} else {
-			fmt.Printf("%0*x\t%s\n", hasher.Size(), hasher.Sum(nil), filename)
+			fmt.Printf("%0*d\t%s\n", hasher.Size(), binary.BigEndian.Uint32(hasher.Sum(nil)), filename)
 		}
 	}
 	os.Exit(exitCode)
