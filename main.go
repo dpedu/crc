@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "crc64-ecma",
+	mode := flag.String("mode", "crc32",
 		"CRC method to use.  Valid values are 'crc32' (IEEE), 'crc64-iso', and 'crc64-ecma'")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [-mode=<MODE>] file [file ...]\n", os.Args[0])
